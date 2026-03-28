@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+    <title>Firas Almashama | Portfolio</title>
+    <meta
+      name="description"
+      content="Personal portfolio website showcasing web development projects, skills, and contact information."
+    />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header class="site-header" role="banner">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#home" aria-label="Go to home">Firas Almashama</a>
+
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+        </button>
+
+        <div class="nav__links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#fun-fact">Fun Fact</a>
+          <a href="#contact">Contact</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-toggle__icon" aria-hidden="true">🌓</span>
+            <span class="theme-toggle__text">Theme</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ===== HERO / HOME ===== -->
+      <section class="section hero" id="home" aria-label="Home">
+        <div class="container hero__grid">
+          <div class="hero__content fade-in">
+            <p class="pill" id="greeting" aria-live="polite">Hello!</p>
+            <h1 class="hero__title">I'm <span class="accent">Firas Almashama</span>.</h1>
+            <p class="hero__subtitle">
+Software engineering student focused on building interactive web applications and improving user experience.            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#projects">View Projects</a>
+              <a class="btn btn--ghost" href="#contact">Contact Me</a>
+            </div>
+
+            <ul class="hero__meta" aria-label="Quick facts">
+              <li><strong>Location:</strong> Saudi Arabia</li>
+              <li><strong>Focus:</strong> Web Fundamentals + AI Tools</li>
+              <li><strong>Status:</strong> Student Portfolio</li>
+            </ul>
+          </div>
+
+          <div class="hero__media fade-in" aria-label="Profile photo">
+            <img
+              src="assets/images/me.png"
+              width="420"
+              height="420"
+              loading="lazy"
+              alt="Profile photo of Firas Almashama"
+              class="avatar"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section class="section" id="about" aria-label="About Me">
+        <div class="container">
+          <h2 class="section__title fade-in">About Me</h2>
+          <p class="section__lead fade-in">
+            I am a web development student passionate about creating modern, accessible websites.
+            I enjoy learning new technologies and turning ideas into interactive experiences.
+            My goal is to build a strong foundation in front-end development and grow into a full-stack developer.
+          </p>
+
+          <div class="cards cards--3">
+            <article class="card fade-in">
+              <h3 class="card__title">Strengths</h3>
+              <p class="card__text">
+                Clean code structure, attention to detail, and strong problem-solving skills.
+              </p>
+            </article>
+
+            <article class="card fade-in">
+              <h3 class="card__title">Skills</h3>
+              <ul class="list">
+                <li>HTML (semantic, accessible)</li>
+                <li>CSS (Flexbox/Grid, responsive)</li>
+                <li>JavaScript (DOM, events, localStorage)</li>
+              </ul>
+            </article>
+
+            <article class="card fade-in">
+              <h3 class="card__title">Hobbies</h3>
+              <p class="card__text">
+                Gaming, reading tech blogs, and building personal projects.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PROJECTS (A2: Dynamic filter + search) ===== -->
+      <section class="section" id="projects" aria-label="Projects">
+        <div class="container">
+          <div class="section__head fade-in">
+            <h2 class="section__title">Projects</h2>
+            <p class="section__lead">
+              Browse my projects below. Use the filter buttons or search to find specific work.
+            </p>
+          </div>
+
+          <!-- A2: Project Filter Buttons -->
+          <div class="project-filters fade-in" aria-label="Filter projects by tag">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="html">HTML</button>
+            <button class="filter-btn" data-filter="css">CSS</button>
+            <button class="filter-btn" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn" data-filter="responsive">Responsive</button>
+          </div>
+
+          <!-- A2: Project Search -->
+          <div class="project-search fade-in">
+            <input
+              type="text"
+              id="projectSearch"
+              placeholder="Search projects by name or description..."
+              aria-label="Search projects"
+            />
+          </div>
+
+          <!-- A2: Empty state message -->
+          <p class="empty-state" id="noProjectsMsg" aria-live="polite"></p>
+
+          <!-- Projects container — JS will render cards here -->
+          <div class="projects" id="projectsContainer">
+            <!-- Cards injected dynamically by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FUN FACT (A2: API Fetch + Loading/Error states) ===== -->
+      <section class="section" id="fun-fact" aria-label="Fun Fact">
+        <div class="container fun-fact-wrapper fade-in">
+          <h2 class="section__title">Random Fun Fact</h2>
+          <p class="section__lead">Click the button to discover something interesting!</p>
+
+          <div class="fun-fact-card">
+            <p class="fun-fact__text" id="funFactText">
+              Click the button below to load a fun fact.
+            </p>
+            <p class="fun-fact__loading" id="funFactLoading" aria-live="polite">Loading…</p>
+            <p class="fun-fact__error" id="funFactError" aria-live="polite"></p>
+            <button class="btn btn--primary" id="funFactBtn" type="button">
+              Get Fun Fact
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section class="section" id="contact" aria-label="Contact">
+        <div class="container">
+          <h2 class="section__title fade-in">Contact</h2>
+          <p class="section__lead fade-in">
+            Have a question or want to connect? Fill out the form below and I'll get back to you.
+          </p>
+
+          <div class="contact">
+            <form class="form fade-in" id="contactForm" novalidate>
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+                <small class="error" id="nameError"></small>
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+                <small class="error" id="emailError"></small>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  minlength="10"
+                ></textarea>
+                <small class="error" id="messageError"></small>
+              </div>
+
+              <button class="btn btn--primary" type="submit">Send Message</button>
+              <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+
+            <aside class="contact__aside fade-in" aria-label="Contact info">
+              <div class="card">
+                <h3 class="card__title">Quick Contact</h3>
+                <p class="card__text">
+                  Email: <a class="link" href="mailto:s202263160@kfupm.edu.sa">s202263160@kfupm.edu.sa</a>
+                </p>
+                <p class="card__text">
+                  LinkedIn: <a class="link" href="https://www.linkedin.com/in/firasalmashama" target="_blank" rel="noreferrer">LinkedIn Profile</a>
+                </p>
+                <p class="card__text">
+                  GitHub: <a class="link" href="https://github.com/FirasKF" target="_blank" rel="noreferrer">GitHub FirasKF</a>
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer">
+        <p>&copy; <span id="year"></span> Firas Almashama. All rights reserved.</p>
+        <a class="link" href="#home">Back to top &uarr;</a>
+      </div>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
